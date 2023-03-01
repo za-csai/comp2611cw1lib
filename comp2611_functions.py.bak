@@ -7,11 +7,6 @@ from copy import deepcopy
 import pandas as pd
 import numpy as np
 
-# search modules
-!mkdir -p bbmodcache
-!curl http://bb-ai.net.s3.amazonaws.com/bb-python-modules/bbSearch.py > bbmodcache/bbSearch.py
-from bbmodcache.bbSearch import SearchProblem, search
-
 # -- Function and Global Variable Definitions -- 
 
 
