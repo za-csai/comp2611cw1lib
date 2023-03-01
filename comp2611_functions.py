@@ -186,40 +186,40 @@ def compare_2_results(result1, result2):
 	print("\n")
 
 def compare_results_percentage(result1, result2):
-	term_cond1 = result1['result']['termination_condition']
-	path_len1 = result1['result']['path_length']
-	nodes_gen1 = result1['search_stats']['nodes_generated']
-	nodes_test1 = result1['search_stats']['nodes_tested']
-	nodes_disc1 = result1['search_stats']['nodes_discarded']
-	states_seen1 = result1['search_stats']['distinct_states_seen']
-	time_taken1 = result1['search_stats']['time_taken']
+    term_cond1 = result1['result']['termination_condition']
+    path_len1 = result1['result']['path_length']
+    nodes_gen1 = result1['search_stats']['nodes_generated']
+    nodes_test1 = result1['search_stats']['nodes_tested']
+    nodes_disc1 = result1['search_stats']['nodes_discarded']
+    states_seen1 = result1['search_stats']['distinct_states_seen']
+    time_taken1 = result1['search_stats']['time_taken']
 
-	term_cond2 = result2['result']['termination_condition']
-	path_len2 = result2['result']['path_length']
-	nodes_gen2 = result2['search_stats']['nodes_generated']
-	nodes_test2 = result2['search_stats']['nodes_tested']
-	nodes_disc2 = result2['search_stats']['nodes_discarded']
-	states_seen2 = result2['search_stats']['distinct_states_seen']
-	time_taken2 = result2['search_stats']['time_taken']
+    term_cond2 = result2['result']['termination_condition']
+    path_len2 = result2['result']['path_length']
+    nodes_gen2 = result2['search_stats']['nodes_generated']
+    nodes_test2 = result2['search_stats']['nodes_tested']
+    nodes_disc2 = result2['search_stats']['nodes_discarded']
+    states_seen2 = result2['search_stats']['distinct_states_seen']
+    time_taken2 = result2['search_stats']['time_taken']
 
-	df = pd.DataFrame({
-    	'': ['Termination Condition', 'Path Length', 'Nodes Generated', 'Nodes Tested',         	'Nodes Discarded', 'Distinct States Seen', 'Time Taken (seconds)'],
-    	'Result 1': [term_cond1, path_len1, nodes_gen1, nodes_test1,                 	nodes_disc1, states_seen1, time_taken1],
-    	'Result 2': [term_cond2, path_len2, nodes_gen2, nodes_test2,                 	nodes_disc2, states_seen2, time_taken2]
-	})
+    df = pd.DataFrame({
+        '': ['Termination Condition', 'Path Length', 'Nodes Generated', 'Nodes Tested', 'Nodes Discarded', 'Distinct States Seen', 'Time Taken (seconds)'],
+        'Result 1': [term_cond1, path_len1, nodes_gen1, nodes_test1, nodes_disc1, states_seen1, time_taken1],
+        'Result 2': [term_cond2, path_len2, nodes_gen2, nodes_test2, nodes_disc2, states_seen2, time_taken2]
+    })
 
-	for i in range(1, len(df)):
-    	if isinstance(df.iloc[i]['Result 1'], (int, float)) and isinstance(df.iloc[i]['Result 2'], (int, float)):
-        	diff = df.iloc[i][Colab'Result 2'] - df.iloc[i]['Result 1']
-        	perc_diff = diff / df.iloc[i]['Result 1'] * 100 if df.iloc[i]['Result 1'] != 0 else 'N/A'
-        	df.loc[i, 'Numerical Difference'] = diff
-        	df.loc[i, 'Difference (%)'] = perc_diff
-    	else:
-        	df.loc[i, 'Numerical Difference'] = 'N/A'
-        	df.loc[i, 'Difference (%)'] = 'N/A'
-       	 
-	print(df)
-	print("\n")
+    for i in range(1, len(df)):
+        if isinstance(df.iloc[i]['Result 1'], (int, float)) and isinstance(df.iloc[i]['Result 2'], (int, float)):
+            diff = df.iloc[i]['Result 2'] - df.iloc[i]['Result 1']
+            perc_diff = diff / df.iloc[i]['Result 1'] * 100 if df.iloc[i]['Result 1'] != 0 else 'N/A'
+            df.loc[i, 'Numerical Difference'] = diff
+            df.loc[i, 'Difference (%)'] = perc_diff
+        else:
+            df.loc[i, 'Numerical Difference'] = 'N/A'
+            df.loc[i, 'Difference (%)'] = 'N/A'
+
+    print(df)
+    print("\n")
 
 
 
